@@ -2,7 +2,7 @@
 //  NoteDetailVC.swift
 //  Note_FinalProject
 //
-//  Created by rschakar on 2020-06-21.
+//  Created by Harkirat Singh on 2020-06-21.
 //  Copyright © 2020 Harkirat Singh. All rights reserved.
 //
 

@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Notes-->
+        <!--TODO-->
         <scene sceneID="u59-hN-cVg">
             <objects>
-                <tableViewController id="Vaf-tO-FVV" customClass="FolderViewController" customModule="Note_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Vaf-tO-FVV" customClass="FolderViewController" customModule="Todo_harkirat_c0772087" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AZ0-4o-gKa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Notes" id="Y9h-jX-I1v">
+                    <navigationItem key="navigationItem" title="TODO" id="Y9h-jX-I1v">
                         <barButtonItem key="rightBarButtonItem" image="folder" catalog="system" id="X7v-Bv-h0W">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="1302.8985507246377" y="-249.10714285714283"/>
         </scene>
-        <!--Notes-->
+        <!--TODO-->
         <scene sceneID="wr6-fk-KFu">
             <objects>
-                <tableViewController id="4Pw-Qn-KOr" customClass="NoteTableViewController" customModule="Note_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4Pw-Qn-KOr" customClass="NoteTableViewController" customModule="Todo_harkirat_c0772087" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uP3-zJ-S4M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,7 +83,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainCell" rowHeight="130" id="hvG-Cb-h39" customClass="NoteTableViewCell" customModule="Note_FinalProject" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainCell" rowHeight="130" id="hvG-Cb-h39" customClass="NoteTableViewCell" customModule="Todo_harkirat_c0772087" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hvG-Cb-h39" id="kdw-6U-Uez">
@@ -150,7 +150,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Notes" id="OHg-Bc-x9o">
+                    <navigationItem key="navigationItem" title="TODO" id="OHg-Bc-x9o">
                         <rightBarButtonItems>
                             <barButtonItem image="plus" catalog="system" id="SQc-7R-1hC">
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="392.75362318840581" y="-249.10714285714283"/>
         </scene>
-        <!--Add Notes-->
+        <!--Todo-->
         <scene sceneID="rHH-1U-9Lx">
             <objects>
-                <viewController storyboardIdentifier="AddNoteVC" id="uGb-zx-MFN" customClass="AddNoteVC" customModule="Note_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNoteVC" id="uGb-zx-MFN" customClass="AddNoteVC" customModule="Todo_harkirat_c0772087" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Afx-cm-mAd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,7 +277,7 @@
                             <color key="tintColor" red="0.57992632769999997" green="0.39572358499999999" blue="0.14211432190000001" alpha="0.75277838909999994" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Add Notes" id="98I-bA-zAw">
+                    <navigationItem key="navigationItem" title="Todo" id="98I-bA-zAw">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="pwa-XJ-gEt">
                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -299,7 +299,7 @@
         <!--Move-->
         <scene sceneID="xmQ-eS-Kah">
             <objects>
-                <viewController id="QvU-xk-6cK" customClass="Move" customModule="Note_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QvU-xk-6cK" customClass="Move" customModule="Todo_harkirat_c0772087" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KPm-eb-Fsn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

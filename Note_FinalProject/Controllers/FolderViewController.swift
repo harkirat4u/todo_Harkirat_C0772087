@@ -11,7 +11,8 @@ import CoreData
 import UserNotifications
 class FolderViewController: UITableViewController {
      // create a folder array to populate the table
-       var folders = [Folder]()
+    var folders = [Folder]()
+    var Array = [Notes]()
        
        // create a context
        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -20,25 +21,7 @@ class FolderViewController: UITableViewController {
            super.viewDidLoad()
            print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
            loadFolder()
-        let center = UNUserNotificationCenter.current()
-        
-        let content = UNMutableNotificationContent()
-        content.title="Reminder"
-        content.body="Check your Task"
-        content.sound = .default
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
-        
-    let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
-        
-        center.add(request){(error) in
-            if error != nil{
-                print("Error - \(error?.localizedDescription ?? "error local notification")")
-            }
-            
-        }
-        
-        
-        
+        Notifications()
         
        }
        
@@ -136,12 +119,45 @@ class FolderViewController: UITableViewController {
            }
            
        }
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
 
-    }
+     func Notifications() {
+            
+           let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let request: NSFetchRequest<Notes> = Notes.fetchRequest()
+                do {
+                    let notifications = try context.fetch(request)
+                    for task in notifications {
+                        if Calendar.current.isDateInTomorrow(task.dateSelect!) {
+                            Array.append(task)
+                        }
+                    }
+                } catch {
+                    print("Error loading todos \(error.localizedDescription)")
+                }
+                
+            if Array.count > 0 {
+        for task in Array {
+        if let name = task.title {
+        let notificationCenter = UNUserNotificationCenter.current()
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Task Reminder"
+        notificationContent.body = "This message is to remind that \(name) is due tommorow"
+        notificationContent.sound = .default
+         let fromDate = Calendar.current.date(byAdding: .day, value: -1, to: task.dateSelect!)!
+        let components = Calendar.current.dateComponents([.month, .day, .year], from: fromDate)
+         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let request = UNNotificationRequest(identifier: "\(name)task", content:notificationContent, trigger: trigger)
+        notificationCenter.add(request) { (error) in
+                            if error != nil {
+                                print(error ?? "notification center error")
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    
 
 }
 
