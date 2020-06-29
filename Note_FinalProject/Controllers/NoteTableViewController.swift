@@ -150,8 +150,7 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
             cell.dateLbl.text = strDate
            cell.titleLbl.text = notes[indexPath.row].title!
             //cell.createdLbl.text = notes[indexPath.row].desc!
-            lati = notes[indexPath.row].latitude
-            longi = notes[indexPath.row].longitude
+          
             
             if(dateto>date1 as Date){cell.backgroundColor = .green}
             else if(dateto<date1 as Date){cell.backgroundColor = .red}

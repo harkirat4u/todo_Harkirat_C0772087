@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 class FolderViewController: UITableViewController {
      // create a folder array to populate the table
        var folders = [Folder]()
@@ -19,6 +20,26 @@ class FolderViewController: UITableViewController {
            super.viewDidLoad()
            print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
            loadFolder()
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title="Reminder"
+        content.body="Check your Task"
+        content.sound = .default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+        
+    let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
+        
+        center.add(request){(error) in
+            if error != nil{
+                print("Error - \(error?.localizedDescription ?? "error local notification")")
+            }
+            
+        }
+        
+        
+        
+        
        }
        
        override func viewWillAppear(_ animated: Bool) {
@@ -115,6 +136,12 @@ class FolderViewController: UITableViewController {
            }
            
        }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+
+    }
 
 }
 
