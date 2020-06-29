@@ -17,8 +17,6 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
     var filteredArray = [String]()
     var searchController = UISearchController()
     var resultsController = UITableViewController()
-    var lati: Double = 0
-    var longi: Double = 0
     var notebook : Folder!
    
     @IBOutlet weak var deletebtn: UIBarButtonItem!
@@ -46,6 +44,7 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
     
     @IBAction func btnSort(_ sender: UIBarButtonItem) {
         sortByTitle()
+        tableView.reloadData()
         
     }
     func updateSearchResults(for searchController: UISearchController) {
@@ -63,19 +62,24 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
     
     
     
-    func sortByTitle() {
-        let fetchRequest:NSFetchRequest<Notes> = Notes.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-        do {
-            self.notes = try context.fetch(fetchRequest)
-        }
-        catch{
-            print(error)
-            dismiss(animated: true, completion: nil)
-        }
-        
-    }
+    func sortByTitle(with request: NSFetchRequest<Notes> = Notes.fetchRequest(), predicate: NSPredicate? = nil) {
+                   
+                            let folderPredicate = NSPredicate(format: "folder.name=%@", selectedFolder!.name!)
+                            request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+                            if let addtionalPredicate = predicate {
+                                request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [folderPredicate, addtionalPredicate])
+                            } else {
+                                request.predicate = folderPredicate
+                            }
+                            
+                            do {
+                                notes = try context.fetch(request)
+                            } catch {
+                                print("Error loading notes \(error.localizedDescription)")
+                            }
+                            
+                            tableView.reloadData()
+                        }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         let serachDta = notes.filter { $0.title!.lowercased().contains(searchText.lowercased()) || $0.desc!.lowercased().contains(searchText.lowercased())}
@@ -195,7 +199,7 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
             let strDate = dateFormatter.string(from: date)
             
             
-            array.append("Title \(note.title!);Desc \(String(describing: note.desc!));Created \(String(describing: strDate) )")
+            array.append("Search by Title \(note.title!)")
         }
         searchController.searchBar.autocapitalizationType = .none
         self.loadNotes()
@@ -207,7 +211,7 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
         func loadNotes(with request: NSFetchRequest<Notes> = Notes.fetchRequest(), predicate: NSPredicate? = nil) {
        
                 let folderPredicate = NSPredicate(format: "folder.name=%@", selectedFolder!.name!)
-                request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+                request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
                 if let addtionalPredicate = predicate {
                     request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [folderPredicate, addtionalPredicate])
                 } else {
