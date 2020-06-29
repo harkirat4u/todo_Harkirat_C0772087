@@ -293,7 +293,7 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
         else  if (segue.identifier == "editNote") {
             
             let editNoteVC = segue.destination as! AddNoteVC
-            
+              editNoteVC.folder = selectedFolder
             let i = (self.tableView.indexPathForSelectedRow?.row)!
             editNoteVC.note = notes[i]
             

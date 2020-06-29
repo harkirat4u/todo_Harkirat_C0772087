@@ -135,7 +135,7 @@ class FolderViewController: UITableViewController {
                     print("Error loading todos \(error.localizedDescription)")
                 }
                 
-            if Array.count > 0 {
+        if Array.count > 0 {
         for task in Array {
         if let name = task.title {
         let notificationCenter = UNUserNotificationCenter.current()

@@ -192,7 +192,7 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="mWf-kl-hmv">
                         <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.57992632769999997" green="0.39572358499999999" blue="0.14211432190000001" alpha="0.75277838909999994" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </toolbar>
                     <connections>
                         <segue destination="Vaf-tO-FVV" kind="relationship" relationship="rootViewController" id="KY2-Xg-0DR"/>
@@ -287,6 +287,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="savebtn" destination="pwa-XJ-gEt" id="qzx-qh-kCw"/>
                         <outlet property="textField_Date" destination="p6L-nf-6wz" id="jEM-rR-oJq"/>
                         <outlet property="txtDesc" destination="xAt-a6-fmL" id="PLH-Mv-5FU"/>
                         <outlet property="txttitle" destination="atp-v9-gXZ" id="FBO-4l-riT"/>
@@ -392,7 +393,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jWL-HW-VeJ"/>
+        <segue reference="ffk-L6-ajz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>

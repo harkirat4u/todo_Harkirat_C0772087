@@ -19,6 +19,8 @@ class AddNoteVC: UIViewController, CLLocationManagerDelegate,UIImagePickerContro
     @IBOutlet var txttitle: UITextField!
     @IBOutlet var txtDesc: UITextView!
 
+    @IBOutlet weak var savebtn: UIBarButtonItem!
+    @IBOutlet weak var update: UIBarButtonItem!
     @IBOutlet weak var textField_Date: UITextField!
      var datePicker : UIDatePicker!
     var listArray = [NSManagedObject]();
@@ -78,6 +80,36 @@ class AddNoteVC: UIViewController, CLLocationManagerDelegate,UIImagePickerContro
                textField.inputAccessoryView = toolBar
                
            }
+    
+    @IBAction func update(_ sender: UIBarButtonItem) {
+        note.title = txttitle.text!
+        
+                         note.desc = txtDesc.text!
+        note.dateSelect = datePicker.date
+                         note.folder = self.folder
+          
+                     do {
+                         try context.save()
+                         listArray.append(note);
+                         let alertBox = UIAlertController(title: "Alert", message: "Data updated Successfully", preferredStyle: .alert)
+                         alertBox.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+                             self.navigationController?.popViewController(animated: true)
+
+                            // self.datecompare()
+                         }))
+                         self.present(alertBox, animated: true, completion: nil)
+                     }
+        catch {
+
+                         let alertBox = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
+                         alertBox.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                         self.present(alertBox, animated: true, completion: nil)
+                     }
+                     if (userIsEditing == false) {
+                         self.navigationController?.popViewController(animated: true)
+                     }
+    }
+    
      @objc func doneClick()
             {
                 let dateFormatter1 = DateFormatter()
@@ -103,7 +135,7 @@ class AddNoteVC: UIViewController, CLLocationManagerDelegate,UIImagePickerContro
     }
     
     @IBAction func btnSave(_ sender: Any) {
-        
+    
         if (userIsEditing == true) {
             note.desc = txtDesc.text!
             note.dateSelect = datePicker.date
@@ -117,6 +149,8 @@ class AddNoteVC: UIViewController, CLLocationManagerDelegate,UIImagePickerContro
             }
             else{
                 note.title = txttitle.text!
+                savebtn.isEnabled=false
+               update.isEnabled=true
             }
             note.desc = txtDesc.text!
             note.folder = self.folder
