@@ -158,7 +158,7 @@ class NoteTableViewController: UITableViewController,UISearchResultsUpdating,UIS
             
             if(dateto>date1 as Date){cell.backgroundColor = .green}
             else if(dateto<date1 as Date){cell.backgroundColor = .red}
-            else{cell.backgroundColor = .orange}
+            if(dateto==date1 as Date){cell.backgroundColor = .orange}
             return cell
         }
         

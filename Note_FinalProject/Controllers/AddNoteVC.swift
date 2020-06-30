@@ -135,10 +135,10 @@ class AddNoteVC: UIViewController, CLLocationManagerDelegate,UIImagePickerContro
     }
     
     @IBAction func btnSave(_ sender: Any) {
-    
+ 
         if (userIsEditing == true) {
             note.desc = txtDesc.text!
-            note.dateSelect = datePicker.date
+            note.dateSelect=datePicker.date
         }
         else {
             
@@ -149,12 +149,13 @@ class AddNoteVC: UIViewController, CLLocationManagerDelegate,UIImagePickerContro
             }
             else{
                 note.title = txttitle.text!
-                savebtn.isEnabled=false
-               update.isEnabled=true
+                   savebtn.isEnabled=false
+                   
             }
             note.desc = txtDesc.text!
+            
             note.folder = self.folder
-             note.dateSelect = datePicker.date
+             note.dateSelect=datePicker.date
         }
         
         do {
