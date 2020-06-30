@@ -63,7 +63,20 @@ class FolderViewController: UITableViewController {
            // #warning Incomplete implementation, return the number of rows
            return folders.count
        }
+    //Swipe Delete
+            override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+             if editingStyle == .delete {
 
+                 deleteNote(folder: folders[indexPath.row])
+                           saveFolders()
+                           folders.remove(at: indexPath.row)
+                           // Delete the row from the data source
+                           tableView.deleteRows(at: [indexPath], with: .fade)
+             } else if editingStyle == .insert {
+                 
+             }
+         }
+    
        
        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: "folderCell", for: indexPath)
@@ -119,6 +132,9 @@ class FolderViewController: UITableViewController {
            }
            
        }
+    func deleteNote(folder: Folder) {
+                  context.delete(folder)
+              }
 
      func Notifications() {
             
